@@ -1,0 +1,113 @@
+{
+	// Place your LaTeX_storage workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Clean Equation Block" : {
+		"scope": "latex",
+		"prefix": "EQ*",
+		"body":[
+			"\\begin{equation*}",
+			"    $1",
+			"\\end{equation*}"
+		]
+	},
+	"Aligned Equation Block": {
+		"scope": "latex",
+		"prefix": "AEQ*",
+		"body": [
+			"\\begin{equation*}",
+			"    \\begin{aligned}",
+			"        $1",
+			"    \\end{aligned}",
+			"\\end{equation*}"
+		]
+	},
+	"Example Block": {
+		"scope": "latex",
+		"prefix": "eg",
+		"body":[
+			"\\begin{example}",
+			"    $1",
+			"\\end{example}"
+		]
+	},
+	"Solution Block":{
+		"scope": "latex",
+		"prefix": "SOL",
+		"body":[
+			"\\begin{solution}",
+			"    $1",
+			"\\end{solution}"
+		]
+	},
+	"Left Right []":{
+		"scope": "latex",
+		"prefix": "LR[]",
+		"body":[
+			"\\left[ $1 \\right]"
+		]
+	},
+	"Left Right {}":{
+		"scope": "latex",
+		"prefix": "LR{}",
+		"body":[
+			"\\left\\{ $1 \\right\\\\}"
+		]
+	},
+	"Definition Block": {
+		"scope": "latex",
+		"prefix": "DEF",
+		"body":[
+			"\\begin{definition}[$1]",
+			"    $2",
+			"\\end{definition}"
+		]
+	},
+	"Right Arrow":{
+		"scope": "latex",
+		"prefix": "ra",
+		"body":[
+			"\\rightarrow"
+		]
+	},
+	"Theorem Block": {
+		"scope": "latex",
+		"prefix": "THM",
+		"body":[
+			"\\begin{theorem}[$1]",
+			"    $2",
+			"\\end{theorem}"
+		]
+	},
+	"Vertical Bar": {
+		"scope": "latex",
+		"prefix": "VBAR",
+		"body":[
+			"\\,\\middle |\\,"
+		]
+	},
+	"Table": {
+		"scope": "latex",
+		"prefix": "TAB",
+		"body":[
+			"\\begin{center}",
+			"\\begin{tabular}{$1}",
+			"    $2",
+			"\\end{tabular}",
+			"\\end{center}"
+		],
+	}
+}

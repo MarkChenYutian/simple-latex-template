@@ -1,0 +1,20 @@
+// This file does not work! It's only a recording of commands, what really works
+// is in VS code preference > keybinding > open in editor
+[
+    {
+        "key": "ctrl+shift+b",
+        "command": "editor.action.insertSnippet",
+        "when": "editorHasSelection", // chained clause
+        "args": {
+            "snippet": "\\textbf{${TM_SELECTED_TEXT}}$0"
+        }
+    },
+    {
+        "key": "ctrl+shift+i",
+        "command": "editor.action.insertSnippet",
+        "when": "editorHasSelection", // chained clause
+        "args": {
+            "snippet": "\\textit{${TM_SELECTED_TEXT}}$0"
+        }
+    }
+]
