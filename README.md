@@ -1,6 +1,8 @@
 # simple-latex-template
 🚀 Simple and elegant LaTeX template that boosts your LaTeX'ing speed!
 
+**The Overleaf version of this repository is here: [https://www.overleaf.com/read/cwrcbpxhstdj](https://www.overleaf.com/read/cwrcbpxhstdj)**
+
 ## Keyboard Shortcut
 
 Import the settings in `.vscodes/keybindings.json` to your VSCode, then you can:
