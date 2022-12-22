@@ -1,6 +1,7 @@
 .DS_Store
 .ipynb_checkpoints/
 *.pdf
+!export/*/*.pdf
 !assets_*.pdf
 
 ## Core latex/pdflatex auxiliary files:

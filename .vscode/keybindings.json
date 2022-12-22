@@ -4,7 +4,7 @@
     {
         "key": "ctrl+shift+b",
         "command": "editor.action.insertSnippet",
-        "when": "editorHasSelection", // chained clause
+        "when": "editorHasSelection",
         "args": {
             "snippet": "\\textbf{${TM_SELECTED_TEXT}}$0"
         }
@@ -12,7 +12,7 @@
     {
         "key": "ctrl+shift+i",
         "command": "editor.action.insertSnippet",
-        "when": "editorHasSelection", // chained clause
+        "when": "editorHasSelection",
         "args": {
             "snippet": "\\textit{${TM_SELECTED_TEXT}}$0"
         }

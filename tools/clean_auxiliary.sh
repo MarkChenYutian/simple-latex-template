@@ -10,3 +10,4 @@ find . -type f -name '*.fls' -delete
 find . -type f -name '*.xml' -delete
 find . -type f -name '*.xdv' -delete
 find . -type f -name '*.synctex.gz' -delete
+find . -type d -name '_minted-*' -exec rm -r {} +

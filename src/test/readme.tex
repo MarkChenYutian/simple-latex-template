@@ -1,0 +1,463 @@
+\documentclass{article}
+
+\usepackage[NoIndent]{../lib/cleanNote}
+
+\usepackage{lipsum} % This package is used to generate random text
+
+\title{\code{cleanNote} - a Fancy Note Package}
+\author{Yutian Chen}
+
+\begin{document}
+    \maketitle
+    \tableofcontents
+    \newpage
+
+    This package is an encapsulation of styling and environment definition for daily note-taking. As the name reveals, We aimed to make the output PDF more `modernized' and `clean'.
+
+    \code{cleanNote} also provides some useful functions like \textbf{dark mode} and \textbf{hide solution} (for review use).
+
+    \section{Theme and Options for \code{cleanNote}}
+
+\begin{codeblock}[tex]
+% Argument Syntax
+\usepackage[Dark?, HideSolution?, NoIndent?]{cleanNote}
+
+% Examples
+\usepackage{cleanNote}                     % Normal setup (light theme)
+\usepackage[Dark]{cleanNote}               % Dark Theme
+\usepackage[Dark, HideSolution]{cleanNote} % Hide solution, Dark theme
+\usepackage[NoIndent]{cleanNote}    % No indent at beginning of paragraph
+\end{codeblock}
+
+    Currently, \code{cleanNote} supports three options:
+
+    \begin{itemize}
+        \item \code{Dark} - Passing this argument into \code{cleanNote} will make output PDF set to "dark mode"
+        \item \code{HideSolution} - Passing this argument into \code{cleanNote} will make output PDF hide all solution (by setting color of solution text same as page background).
+        \item \code{NoIndent} - Passing this argument into \code{cleanNote} will remove the indentation at beginning of paragraph.
+    \end{itemize}
+
+    \section{Environments}
+
+    Multiple environments are defined in \code{cleanNote}. This section will introduce and demonstrate each of them:
+
+    \subsection{Definition}
+
+\begin{codeblock}[tex]
+\begin{definition}[<Term>]?
+    <Content>
+\end{definition}
+\end{codeblock}
+
+    \begin{definition}[Terminology]
+        The technical or special terms used in a business, art, science, or special subject (\href{https://www.merriam-webster.com/dictionary/terminology}{source})
+    \end{definition}
+
+    Note that the argument \code{<term>} is optional, meaning that you can create a definition without passing any argument.
+
+    \begin{definition}
+        This is a definition without the \code{<term>} argument.
+    \end{definition}
+
+    \subsection{Theorem}
+
+\begin{codeblock}[tex]
+\begin{theorem}[<Theorem_name>]?
+    <Content>
+\end{theorem}
+\end{codeblock}
+
+\begin{theorem}[Pythagorean Theorem]
+    If $c$ denotes the length of the hypotenuse and $a$ and $b$ denote the two lengths of the legs of a right triangle, then the Pythagorean theorem can be expressed as the Pythagorean equation: 
+    \begin{equation*}
+        a^2 + b^2 = c^2
+    \end{equation*}
+\end{theorem}
+
+Similar to environment \code{definition}, the \code{theorem} environment's argument can be omitted.
+
+\begin{theorem}[]
+    This theorem is too trivial to receive a proper name :(
+\end{theorem}
+
+\subsection{Proposition}
+
+\begin{codeblock}[tex]
+\begin{proposition}[<Proposition_name>]?
+    <Content>
+\end{proposition}
+\end{codeblock}
+
+\begin{proposition}
+    Proposition is important, but not so important as a theorem, so it does not have a fancy box.
+\end{proposition}
+
+\begin{proposition}[Some Name]
+    Maybe some proposition is more important than others that it also deserves a name
+\end{proposition}
+
+\subsection{Proof}
+
+\begin{codeblock}[tex]
+\begin{proof}
+    <Content>
+\end{proof}
+\end{codeblock}
+
+    The \code{proof} environment is similar to the \code{proof} environment provided in \code{amsmath} package. An empty square represents Q.E.D. will be shown on the right at the end of proof.
+
+    \begin{proof}
+        Here's a simple proof that the Q.E.D. square does exist at the end of proof.
+
+    \end{proof}
+
+    \subsection{Note}
+
+    Something is so important that it is better to be highlighted from normal texts. If that's the case, then \code{note} environment is the one you need!
+
+\begin{codeblock}[tex]
+\begin{note}
+    <Content>
+\end{note}
+\end{codeblock}
+
+    \begin{note}
+        Something is just so special that it deserves a beautiful background.
+    \end{note}
+
+    \subsection{Example}
+
+\begin{codeblock}[tex]
+\begin{example}[<Question_name>]?
+    <Content>
+\end{example}
+\end{codeblock}
+
+\begin{example}[Example Question]
+    Some `Example example' is happening here haha.
+\end{example}
+
+\begin{example}
+    Example of \code{example} environment without argument.
+\end{example}
+
+    \subsection{Solution}
+
+    Solution is just plain block with `End of solution' marked at the end of block. However, when \code{HideSolution} argument is passed into the \code{cleanNote} package, all contents in the solution package will be hidden. (unless you explicitly set a color for the text!)
+
+    \begin{solution}
+        Example Solution...I really like the beautiful typeset of math equations in LaTeX.
+        \begin{equation*}
+            \int_{\mathrm{Born}}^{\mathrm{Death}}{\mathrm{"My\;Heart\;is\;in\;the\;Work!"} \dd{t}}
+        \end{equation*}
+    \end{solution}
+
+    \subsection{Code Block}
+
+    \code{codeblock} environment can be applied whenever you want to insert a chunk of code in your PDF. It's syntax highlighting module (which relies on a python module called \code{pygmentize}) supports almost any language you can think of! (Sadly, no support for \code{C0} and \code{BC0}, though)
+
+    \begin{note}
+        Using code block feature with syntax highlighting requires a properly installed \code{pygmentize} package and also \code{--shell-escape} flag in compiler setting
+    \end{note}
+
+\begin{codeblock}[tex]
+\begin {codeblock} [<Language>]?
+<Code_content>
+\end {codeblock}
+\end{codeblock}
+
+\begin{codeblock}[python]
+def main():
+    print("Hello world")        # Python is the best language :)
+\end{codeblock}
+
+\begin{codeblock}[javascript]
+function greeting() {
+    console.log("Hello world"); // I like adding ; at the end of JS!
+}
+\end{codeblock}
+
+Maybe you are wondering what will happen if there's a suuuuuuper long line in your code, so here's a demo:
+
+\begin{codeblock}[typescript]
+const f = (UIHook: ReactHooks, mem: C0HeapAllocator, arg1: C0Value<Maybe<"value">>, arg2: C0Value<Maybe<"string">>) => { ... };
+\end{codeblock}
+
+\section{Integration with Visual Studio Code}
+\subsection{\code{ltex} - Syntax Checking Plugin}
+
+If you are using \code{ltex} plugin as a syntax checker for your LaTeX project, you can insert following configurations into \code{./.vscode/settings.json} file.
+
+These configurations will tell \code{ltex} not to check syntax for contents in \code{Codeblock} environment or \code{\textbackslash code\textbraceleft...\textbraceright} macro.
+
+\begin{codeblock}[json]
+"ltex.latex.environments": {
+    "lstlisting": "ignore",
+    "verbatim": "ignore",
+    "codeblock": "ignore",
+},
+"ltex.latex.commands": {
+    "\\label{}": "ignore",
+    "\\documentclass[]{}": "ignore",
+    "\\cite{}": "dummy",
+    "\\cite[]{}": "dummy",
+    "\\code{}": "dummy"
+}
+\end{codeblock}
+
+\subsection{Code Snippets}
+
+You can also import the \code{tex\_snippet.code-snippets} into \code{./.vscode} directory to apply some simple snippets to your LaTeX project.
+
+The available snippets are listed below:
+
+\begin{enumerate}
+    \item \code{EQ*} - Equation block
+        \begin{codeblock}[tex]
+\begin{equation*}
+    <1>
+\end{equation*}
+        \end{codeblock}
+    \item \code{AEQ*} - Multiline Equation Block with Alignment
+\begin{codeblock}[tex]
+\begin{equation*}
+    \begin{aligned}
+        <1>
+    \end{aligned}
+\end{equation*}
+\end{codeblock}
+    \item \code{EG} - Example Environment Block
+\begin{codeblock}[tex]
+\begin{example}
+    <1>
+\end{example}
+\end{codeblock}
+    \item \code{SOL} - Solution Environment Block
+\begin{codeblock}[tex]
+\begin{solution}
+    <1>
+\end{solution}
+\end{codeblock}
+    \item \code{CODE} - Code Block Environment
+\begin{codeblock}[tex]
+\begin {codeblock}[<1>]
+<2>
+\end {codeblock}
+\end{codeblock}
+    \item \code{LR[]} - Quick Left Right Square Bracket
+\begin{codeblock}[tex]
+\left [ <1> \right ]
+\end{codeblock}
+    \item \code{LR\textbraceleft\textbraceright} - Quick Left Right Bracket
+\begin{codeblock}[tex]
+\left\{ <1> \right\}
+\end{codeblock}
+    \item \code{DEF} - Definition Environment
+\begin{codeblock}[tex]
+\begin{definition}[<1>]
+    <2>
+\end{definition}
+\end{codeblock}
+    \item \code{RA} - Right arrow under Math Mode
+\begin{codeblock}[tex]
+\rightarrow
+\end{codeblock}
+    \item \code{THM} - Theorem Environment
+\begin{codeblock}[tex]
+\begin{theorem}[<1>]
+    <2>
+\end{theorem}
+\end{codeblock}
+    \item \code{VBAR} - Vertical bar within left-right brackets
+\begin{codeblock}[tex]
+\,\middle |\,
+\end{codeblock}
+    \item \code{TAB} - Quick framework for tabular environment
+\begin{codeblock}[tex]
+\begin{center}
+\begin{tabular}{<1>}
+    <2>
+\end{tabular}
+\end{center}
+\end{codeblock}
+    \item \code{FIGBLOCK} - Figure block (takes complete width on page)
+\begin{codeblock}[tex]
+\begin{figure}[ht]
+   \begin{center}
+   \centering\includegraphics[width=<1>]{assets/<2>}
+   \caption{\color{\captionColor} <3>}
+   \end{center}
+\end{figure}
+\end{codeblock}
+    \item \code{FIGINLINE} - Figure inline (figure that floats on left / right, default right)
+\begin{codeblock}[tex]
+\begin{wrapfigure}{r}{<1>\textwidth}
+    \centering\includegraphics[width=<2>\textwidth]{<3>}
+\end{wrapfigure}
+\end{codeblock}
+\end{enumerate}
+
+For the actual configuration files, see Section 4 Appendix.
+
+\subsection{Key Bindings}
+
+You can also import the key bindings file into \code{VSCode} setting (\code{keybindings.json}).
+
+\begin{codeblock}[json]
+[
+    {
+        "key": "ctrl+shift+b",
+        "command": "editor.action.insertSnippet",
+        "when": "editorHasSelection",
+        "args": {
+            "snippet": "\\textbf{${TM_SELECTED_TEXT}}$0"
+        }
+    },
+    {
+        "key": "ctrl+shift+i",
+        "command": "editor.action.insertSnippet",
+        "when": "editorHasSelection",
+        "args": {
+            "snippet": "\\textit{${TM_SELECTED_TEXT}}$0"
+        }
+    }
+]
+\end{codeblock}
+
+After importing these configurations, when you select some text in editor and press \code{ctrl + shift + b}, the text will become \textbf{bold} automatically.
+
+Similarly, pressing \code{ctrl + shift + i} will make text \textit{italic}.
+
+\section{Appendix: Full Snippet Setup File}
+
+\begin{codeblock}[json]
+{
+    "Clean Equation Block" : {
+        "scope": "latex",
+        "prefix": "EQ*",
+        "body":[
+            "\\begin{equation*}",
+            "    $1",
+            "\\end{equation*}"
+        ]
+    },
+    "Aligned Equation Block": {
+        "scope": "latex",
+        "prefix": "AEQ*",
+        "body": [
+            "\\begin{equation*}",
+            "    \\begin{aligned}",
+            "        $1",
+            "    \\end{aligned}",
+            "\\end{equation*}"
+        ]
+    },
+    "Example Block": {
+        "scope": "latex",
+        "prefix": "EG",
+        "body":[
+            "\\begin{example}",
+            "    $1",
+            "\\end{example}"
+        ]
+    },
+    "Solution Block":{
+        "scope": "latex",
+        "prefix": "SOL",
+        "body":[
+            "\\begin{solution}",
+            "    $1",
+            "\\end{solution}"
+        ]
+    },
+    "Code Block":{
+        "scope": "latex",
+        "prefix": "CODE",
+        "body": [
+            "\\begin{codeblock}[$1]",
+            "$2",
+            "\\end {codeblock}"
+        ]
+    },
+    "Left Right []":{
+        "scope": "latex",
+        "prefix": "LR[]",
+        "body":[
+            "\\left[ $1 \\right]"
+        ]
+    },
+    "Left Right {}":{
+        "scope": "latex",
+        "prefix": "LR{}",
+        "body":[
+            "\\left\\{ $1 \\right\\\\}"
+        ]
+    },
+    "Definition Block": {
+        "scope": "latex",
+        "prefix": "DEF",
+        "body":[
+            "\\begin{definition}[$1]",
+            "    $2",
+            "\\end{definition}"
+        ]
+    },
+    "Right Arrow":{
+        "scope": "latex",
+        "prefix": "RA",
+        "body":[
+            "\\rightarrow"
+        ]
+    },
+    "Theorem Block": {
+        "scope": "latex",
+        "prefix": "THM",
+        "body":[
+            "\\begin{theorem}[$1]",
+            "    $2",
+            "\\end{theorem}"
+        ]
+    },
+    "Vertical Bar": {
+        "scope": "latex",
+        "prefix": "VBAR",
+        "body":[
+            "\\,\\middle |\\,"
+        ]
+    },
+    "Table": {
+        "scope": "latex",
+        "prefix": "TAB",
+        "body":[
+            "\\begin{center}",
+            "\\begin{tabular}{$1}",
+            "    $2",
+            "\\end{tabular}",
+            "\\end{center}"
+        ],
+    },
+    "Block Figure": {
+        "scope": "latex",
+        "prefix": "FIGBLOCK",
+        "body": [
+            "\\begin{figure}[ht]",
+            "   \\begin{center}",
+            "   \\centering\\includegraphics[width=$1]{assets/$2}",
+            "   \\caption{\\color{\\captionColor} $3}",
+            "   \\end{center}",
+            "\\end{figure}"
+        ]
+    },
+    "Inline Figure": {
+        "scope": "latex",
+        "prefix": "FIGINLINE",
+        "body": [
+            "\\begin{wrapfigure}{r}{$1\\textwidth}",
+            "    \\centering\\includegraphics[width=$2\\textwidth]{$3}",
+            "\\end{wrapfigure}"
+        ]
+    }
+}   
+\end{codeblock}
+
+\end{document}

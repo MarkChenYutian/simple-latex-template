@@ -5,7 +5,7 @@
             "name": "LaTeXmk",
             "tools": [
                 "latexmk"
-            ]
+            ],
         },
         {
             "name": "pdflatex ➞ bibtex ➞ pdflatex`×2",
@@ -34,8 +34,10 @@
             "name": "latexmk",
             "command": "latexmk",
             "args": [
+                "-f",
+                "-shell-escape",
                 "-synctex=1",
-                "-interaction=nonstopmode",
+                "-interaction=batchmode",
                 "-file-line-error",
                 "-pdf",
                 "-outdir=%OUTDIR%",
@@ -146,5 +148,18 @@
         }
     ],
     "files.eol": "\n",
-    "jupyter.jupyterServerType": "local"
+    "ltex.latex.environments": {
+        "lstlisting": "ignore",
+        "verbatim": "ignore",
+        "codeblock": "ignore",
+    },
+    "ltex.latex.commands": {
+        "\\label{}": "ignore",
+        "\\documentclass[]{}": "ignore",
+        "\\cite{}": "dummy",
+        "\\cite[]{}": "dummy",
+        "\\code{}": "dummy",
+        "\\scode{}": "dummy"
+    },
+    "cmake.configureOnOpen": true
 }

@@ -37,7 +37,7 @@
 	},
 	"Example Block": {
 		"scope": "latex",
-		"prefix": "eg",
+		"prefix": "EG",
 		"body":[
 			"\\begin{example}",
 			"    $1",
@@ -51,6 +51,15 @@
 			"\\begin{solution}",
 			"    $1",
 			"\\end{solution}"
+		]
+	},
+	"Code Block":{
+		"scope": "latex",
+		"prefix": "CODE",
+		"body": [
+			"\\begin{codeblock}[$1]",
+			"$2",
+			"\\end{codeblock}"
 		]
 	},
 	"Left Right []":{
@@ -78,7 +87,7 @@
 	},
 	"Right Arrow":{
 		"scope": "latex",
-		"prefix": "ra",
+		"prefix": "RA",
 		"body":[
 			"\\rightarrow"
 		]
@@ -109,5 +118,26 @@
 			"\\end{tabular}",
 			"\\end{center}"
 		],
+	},
+	"Block Figure": {
+		"scope": "latex",
+		"prefix": "FIGBLOCK",
+		"body": [
+			"\\begin{figure}[ht]",
+			"   \\begin{center}",
+			"   \\centering\\includegraphics[width=$1]{assets/$2}",
+			"   \\caption{\\color{\\captionColor} $3}",
+			"   \\end{center}",
+			"\\end{figure}"
+		]
+	},
+	"Inline Figure": {
+		"scope": "latex",
+		"prefix": "FIGINLINE",
+		"body": [
+			"\\begin{wrapfigure}{r}{$1\\textwidth}",
+			"    \\centering\\includegraphics[width=$2\\textwidth]{$3}",
+			"\\end{wrapfigure}"
+		]
 	}
 }
